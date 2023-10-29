@@ -3,8 +3,12 @@
     <a-layout-header style="display:flex;position: absolute; top: 0; left: 0; right: 0;">
         <div class="logo">阿如的混乱空间</div>
         <a-menu theme="dark" mode="horizontal" :defaultSelectedKeys="['1']">
-          <a-menu-item class="menu-item" key="1">首页</a-menu-item>
-          <a-menu-item class="menu-item" key="2">云盘</a-menu-item>
+          <a-menu-item class="menu-item" key="1" @click="goToHome">
+            首页
+          </a-menu-item>
+          <a-menu-item class="menu-item" key="2" @click="goToAbout">
+            云盘
+          </a-menu-item>
           <a-menu-item class="menu-item" key="3">我的</a-menu-item>
         </a-menu>
     </a-layout-header>  
@@ -27,7 +31,7 @@
 
       <a-layout-content class="contentcss">
         <router-view>
-          <a-button @click=showWarning>Click Me</a-button>
+          <a-button style='margin-top: 100px;margin-left: 200px;' @click=showWarning>公告</a-button>
         </router-view>
       </a-layout-content>
 
@@ -37,9 +41,21 @@
     </a-layout>
 </template>
 
-<script>
+<script >
 import axios from 'axios'
+import { useRouter } from 'vue-router';
 import { Button,Layout,Menu,Modal } from 'ant-design-vue';
+const router = useRouter();
+
+const goToHome = () => {
+  router.push('/');
+};
+
+const goToAbout = () => {
+  router.push('/about');
+};
+export {goToHome,goToAbout}
+;
 export default{
   components: {
     'a-button':Button,
