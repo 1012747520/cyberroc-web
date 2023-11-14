@@ -1,7 +1,7 @@
 #Dockerfile
 
 #基础镜像
-FROM nginx:latest
+FROM registry.cn-hangzhou.aliyuncs.com/cyberroc/nginxbase:20231114v1
 
 RUN rm /etc/nginx/conf.d/default.conf
 
