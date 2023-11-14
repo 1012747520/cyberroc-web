@@ -1,19 +1,19 @@
+#Dockerfile
 
 #基础镜像
 FROM nginx:latest
 
-#设置工作路径
-#WORKDIR /app 
+RUN rm /etc/nginx/conf.d/default.conf
 
-#作者声明
-#LABEL Author teddy
+# 拷贝 npm run build 之后的产物文件到对应的 nginx 目录
+COPY dist/ /usr/share/nginx/html
 
-#复制应用程序代码到容器中
-COPY dist /usr/share/nginx/html
+# 拷贝配置文件到对应的 nginx 目录
+COPY default.conf /etc/nginx/conf.d/default.conf
 
-#暴露端口
-#EXPOSE 80 
 
-##设置环境变量
-#ENV NODE_ENV=production
+# 指定暴露容器端口 80
+EXPOSE 80
+
+
 
