@@ -9,7 +9,7 @@ RUN rm /etc/nginx/conf.d/default.conf
 COPY dist/ /usr/share/nginx/html
 
 # 拷贝配置文件到对应的 nginx 目录
-COPY default.conf /etc/nginx/conf.d/default.conf
+ADD default.conf /etc/nginx/conf.d/
 
 
 # 指定暴露容器端口 80
